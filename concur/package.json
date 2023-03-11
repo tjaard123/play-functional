@@ -1,0 +1,27 @@
+{
+  "name": "galactia",
+  "version": "0.1.0",
+  "description": "Galactia",
+  "main": "index.js",
+  "scripts": {
+    "build": "spago build",
+    "start": "parcel dev/index.html",
+    "watch": "parcel watch dev/index.html",
+    "clean": "rimraf .cache .spago .psci_modules output .pulp-cache prod dist",
+    "dev": "rimraf dist && spago build && cross-env NODE_ENV=development parcel build --public-url ./ dev/index.html",
+    "prod": "rimraf temp && rimraf dist && mkdir temp && cp dev/index.html temp/ && spago bundle-app --to temp/index.js && java -jar ../closure-compiler/closure-compiler-v20190301.jar --js temp/index.js --js_output_file temp/minified.js && mv temp/minified.js temp/index.js && parcel build --public-url ./ temp/index.html && rimraf temp"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.5",
+    "parcel": "^2.8.3",
+    "process": "^0.11.10",
+    "purescript": "0.15.8",
+    "rimraf": "^3.0.2",
+    "spago": "^0.20.9"
+  }
+}

@@ -1,0 +1,12 @@
+* {
+  font-family: 'Rubik', sans-serif;
+}
+
+.categories {
+  display: flex;
+}
+
+.categories button {
+  margin-right: 10px;
+  padding: 10px;
+}

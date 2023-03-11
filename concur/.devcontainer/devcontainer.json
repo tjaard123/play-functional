@@ -1,0 +1,15 @@
+{
+	"name": "Purescript",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"nwolverson.ide-purescript"
+			]
+		}
+	},
+	"remoteUser": "root"
+}
+
