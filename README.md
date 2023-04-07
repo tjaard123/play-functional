@@ -1,5 +1,7 @@
 # Functional programming
 
+This repo is my never-ending journey of learning functional, it's a **WORK IN PROGRESS**
+
 ## Resources
 
 - [Functional Programming; What? Why? When? - Robert C. Martin](https://www.youtube.com/watch?v=7Zlp9rKHGD4)
@@ -62,7 +64,67 @@ Everyting would simply work better if all functions had one input. For this we n
 
 > fn (x, y) = fn(x) |> fn(y)
 
+### Monadic
+
+Monadic function: Function with a single argument
+
 ### Monad
 
->>= almost like a then?
+A Monad is a pattern to compose functions which has side effects.
+
+[Read more...](./docs/monads.md)
+
+### Effects
+
+Something that your program effects, the outside world interaction. This is implicitly controlled within functional languages.
+
+For example, we read the window, get local storage and read a key. A stream of effects:
+
+```purescript
+-- Using do notation, more readable?
+getTokenFromStorage' :: Effect (Maybe String)
+getTokenFromStorage' = do
+  w <- window
+  s <- localStorage w
+  getItem discordTokenKey s
+```
+
+But this is just the description, how do you... **run** it?
+
+You need a **runtime**
+
+- pure: `a -> Eff a` - Lift a value into an Effect
+- map: `(a -> b) -> Eff a -> Eff b` - Use the value returned by Effect
+- bind: `Eff a -> (a -> Eff b) -> Eff b` - Return new effect in order to run effects in sequence
+
+Async bind is the way to get rid of callbacks
+
+```purescript
+example :: Aff _ (Array String)
+example path = do
+  files <- FS.readDir
+  for files \file -> do
+    FS.readFile file
+```
+
+Aff
+
+### Random
+
+Point free notation, leaving out the last argument, as it's passed automatically along the chain
+
+```purescript
+-- Point free form using >>= (bind)
+getTokenFromStorage ∷ Effect (Maybe String)
+getTokenFromStorage = window >>= localStorage >>= getItem discordTokenKey
+
+-- Using do notation, more readable?
+getTokenFromStorage' :: Effect (Maybe String)
+getTokenFromStorage' = do
+  w <- window
+  s <- localStorage w
+  getItem discordTokenKey s
+```
+
+
 

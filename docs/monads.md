@@ -1,8 +1,4 @@
-# Monad
-
-WIP
-
-
+# Monads
 
 ## Monads, is a pattern
 
@@ -10,7 +6,7 @@ WIP
 - Like dependency injection is a pattern to make your dependencies explicit.
 - The pattern has been adopted and built into some languages, just like dependency injection.
 
-## Behind every pattern is an opinion
+## Behind every pattern, is an opinion
 
 The pattern builds on an opinion on how good code should be written.
 
