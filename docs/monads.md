@@ -39,7 +39,7 @@ Turns out, the pattern isn't only useful for side effects. It's useful to deal w
 
 ## An example of the pattern
 
-Here's an example of the pattern in [JavaScript](./monad.js). Explore it now or at the end...
+Here's an example of the pattern in [JavaScript](./monads.js). Explore it now or at the end...
 
 Instead of having a function execute a side effect, the side effect is explicitly stated, and results returned to handle by the caller.
 
