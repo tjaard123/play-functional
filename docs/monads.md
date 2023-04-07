@@ -81,7 +81,7 @@ But wrapping the result now makes things clunky, and difficult to compose or cha
 
 The Monad pattern is a way to deal with this.
 
-Now study the [JavaScript](./monad.js) example...
+Now study the [JavaScript](https://github.com/tjaard123/play-functional/blob/main/docs/monads.js) example...
 
 ## Resources
 
