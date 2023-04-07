@@ -41,15 +41,20 @@ Turns out, the pattern isn't only useful for side effects. It's useful to deal w
 
 Here's an example of the pattern in [JavaScript](./monad.js). Explore it now or at the end...
 
-Instead of having a function execute a side effect, the side effect is explicit and results returned to handle by the caller.
+Instead of having a function execute a side effect, the side effect is explicitly stated, and results returned to handle by the caller.
 
 ```js
+// Without a Monad
+// The side effect is hidden
+//
 let squareWithSideEffect = (n) => {
   console.log(`squaring ${n}`);
   return n * n;
 }
 
-// No side effect, side effect returned to be handled
+// Monad pattern
+// No side effect, side effect returned to caller, to be handled
+//
 let squareAndLog_Pure = (n, logs) => {
   logs += ` squaring ${n} `;
   return [n * n, logs];
@@ -58,9 +63,9 @@ let squareAndLog_Pure = (n, logs) => {
 
 ## Side effects are output
 
-Do you see it? Your side effect becomes an OUTPUT.
+Do you see it? Your side effect becomes an OUTPUT. It also changes your INPUT.
 
-Because functional programming avoids side effects, it naturally requires more input, and more output.
+Because functional programming avoids side effects, functions naturally requires more (larger) input, and more output.
 
 We wanted to just return the answer, but we have to return the answer, plus side effect. The caller can decide when and how to run the side effect.
 
