@@ -1,14 +1,14 @@
 # Monads
 
-## Monads, is a pattern
+> Monads, is a pattern.
 
 - A coding pattern, an opinionated way to deal with a common scenario.
 - Like dependency injection is a pattern to make your dependencies explicit.
-- The pattern has been adopted and built into some languages, just like dependency injection.
+- The Monad pattern has been adopted and built into some languages, just like dependency injection.
 
 ## Behind every pattern, is an opinion
 
-The pattern builds on an opinion on how good code should be written.
+> The pattern supports an opinion for writing good code.
 
 Dependency injection's opinion is that an object shouldn't have a dependency built in, it should be injected by the creator.
 
@@ -88,14 +88,43 @@ Now study the [JavaScript](./monads.js) example...
 - https://www.continuum.be/en/blog/a-gentle-introduction-to-monads/
 
 ---
+---
 
 ## WORK IN PROGRESS & NOTES...
 
-Why is this pattern useful for functional programming?
-- Because functions remain pure, side effects are output (explicit)
-- Functions can be composed, side effects are composed as well
+Purescript get storage token example.
 
-Now for an async example...
+To get a key from local storage in JavaScript, say the token stored there by previous login, you'll do:
+
+```js
+var token = localStorage.getItem("TOKEN");
+if (token) ...
+```
+
+The token could be null, and you're not forced to test for it. Storage could also be disabled or perhaps you're running nodejs and not in a browser.
+
+PureScript doesn't assume anything, you first need a window, then storage, and then get item returns maybe the value, maybe nothing:
+
+You know that in order to retrieve the window, there's going to be a side effect. It needs to reach out to the outside world, the browser.
+
+The main method, will return nothing, but has a side effect
+main :: Effect Unit
+main = do
+  log "🍝"
+
+```purescript
+getTokenFromStorage :: Effect (Maybe String)
+getTokenFromStorage = do
+  w <- window 								-- Effect Window
+  s <- localStorage w 				-- Window -> Effect Storage
+  getItem discordTokenKey s 	-- String -> Storage -> Effect (Maybe String)
+```
+
+You could almost read: `window().then(w => w.localStorage...)`
+
+---
+
+Async example...
 
 ```js
 var fetchPost = (postId) => {
@@ -123,9 +152,7 @@ var userNameOfPost1 = fetchAll(fetchPosts(1), fetchUser(?));
 ? Eliminate callback hell?
 ? Almost like a then?
 
-
-*Monadic function: Function with a single argument*
-This isn't really important...
+---
 
 Rules engine example
 

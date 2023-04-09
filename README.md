@@ -21,6 +21,84 @@ This repo is my never-ending journey of learning functional, it's a **WORK IN PR
 
 ## Functional basics
 
+### Purity
+
+If the same input always produces the same output, a function is pure. If we can assume this for all functions, the compiler can help us a ton, and we can have much more confidence in our code. It's surprising how much safety a compiler can provide to our programs when we use a language who can guarantee this.
+
+Basically, stop doing this:
+
+```js
+function pay (payment) {
+  // Change the state
+
+  // Change something in the environment
+  savePaymentToDb(payment);
+
+  return output;
+}
+
+// Some state
+
+// Caller doesn't know everything the function will do
+// Our input isn't the only thing the function uses
+var o = doSomething(i);
+// Our output is only the answer, nothing more
+// We have to test the output for scenarios, if we want...
+```
+
+The compiler can't help you buddy, you'll see the error at runtime.
+
+Start doing this:
+
+```js
+function doSomething (everythingItNeeds) {
+  return everythingThatChanged;
+}
+
+// Caller has to provide everything the function needs
+var o = doSomething(a);
+// Caller has to deal with every possible scenario
+```
+
+The compiler can force you to deal with every scenario, you literally can't get it wrong, or forget.
+
+We're limiting our functions, to not have side effects, and do unpredictable things. But in order to do this, input and output is your only tool. You want to log to the console, you can't, but you can return logs and let the caller decide. Want to get something from an API, fine, but your function signature must be clear that this will happen, and you have to handle all the possible output.
+
+### Wrappers
+
+The above was pretty basic, it's just the idea. The language to achieve the above concept has lots of tricks up it's sleeve.
+
+Most importantly, we'll provide more input, and receive more output. We'll not only receive the answer of 2 plus 2, but also the logs, and we need to decide what to do with it. We will receive all scenarios as output, for example, maybe the value, or maybe an error.
+
+Functions that return one single value, the answer, can't do this.
+
+You need to wrap input and output in types. You'll return:
+
+```js
+{
+  answer: 3,
+  logs: "1 + 2 = 3"
+}
+```
+
+Instead of just `3`. But returning a random answer for every function isn't all that useful.
+
+### Algebraic Data Types
+
+The key is to type your output into some pattern. For example a Maybe, something that is either a value, or nothing. Or type it to something that can be mapped over. Once you only use a few certain types, or patterns, your compiler gets super powers.
+
+Algebraic data types are just types, that can be AND, or OR.
+
+Or is like an enum, it can be this, or that, but not both.
+
+And is just like an object, a record must have an age, and a name.
+
+### Category Theory
+
+This theory is super helpful as it has loads of well known types (Monads, Functors) etc.
+
+Each of these types give you a benefit.
+
 ### Composition:
 
 Think Lego. Each block is independent. Putting more than one block together, still makes it composable with other blocks. You can compose them in different ways.
