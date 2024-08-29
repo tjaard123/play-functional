@@ -18,6 +18,7 @@ This repo is my never-ending journey of learning functional, it's a **WORK IN PR
 - [F# for fun and profit](http://http://fsharpforfunandprofit.com/)
 - [Book code](https://bitbucket.org/syncfusion/fsharp-succinctly)
 - [Category Theory - Bartosz Milewski](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_)
+- [SICP - The ultimate programming book](https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871)
 
 ## Functional basics
 
