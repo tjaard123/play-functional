@@ -19,6 +19,9 @@ This repo is my never-ending journey of learning functional, it's a **WORK IN PR
 - [Book code](https://bitbucket.org/syncfusion/fsharp-succinctly)
 - [Category Theory - Bartosz Milewski](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_)
 - [SICP - The ultimate programming book](https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871)
+- [YouTube series: Category theory for programmers](https://www.youtube.com/watch?v=SmXB2K_5lcA)
+- [YouTube series: Structure and interpretation of computer programs](https://www.youtube.com/watch?v=oA-FdE3KV88)
+- [Parse don't validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)
 
 ## Functional basics
 
